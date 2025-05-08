@@ -6,10 +6,6 @@ executing with the pure Go Wasm runtime [wazero][2]. This means that `go install
 can be used to execute it, with no need to rely on separate package managers such as pnpm,
 on any platform that Go supports.
 
-## Behavior Differences
-
-- Output formatters for Codeclimate are not supported
-
 ## Installation
 
 Precompiled binaries are available in the [releases](https://github.com/wasilibs/go-hadolint/releases).

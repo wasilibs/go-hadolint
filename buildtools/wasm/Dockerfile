@@ -10,7 +10,7 @@ RUN ./setup.sh
 WORKDIR /workspace
 ADD buildtools/wasm/version.txt version.txt
 ADD buildtools/wasm/patch.txt patch.txt
-RUN curl -L https://github.com/hadolint/hadolint/archive/refs/tags/$(cat version.txt).tar.gz | tar -xz --strip-components 1 -C /workspace
+RUN curl -L https://github.com/hadolint/hadolint/archive/28fc39f92e2768d8cc9f94d6e2fc16bd4397f092.tar.gz | tar -xz --strip-components 1 -C /workspace
 RUN patch -p1 < patch.txt
 
 RUN . ~/.ghc-wasm/env && wasm32-wasi-cabal update && wasm32-wasi-cabal build --allow-newer exe:hadolint
