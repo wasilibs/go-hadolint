@@ -10,6 +10,8 @@ import (
 	"strings"
 
 	"github.com/tetratelabs/wazero"
+	"github.com/tetratelabs/wazero/api"
+	"github.com/tetratelabs/wazero/experimental"
 	"github.com/tetratelabs/wazero/experimental/sysfs"
 	"github.com/tetratelabs/wazero/imports/wasi_snapshot_preview1"
 	wzsys "github.com/tetratelabs/wazero/sys"
@@ -18,7 +20,7 @@ import (
 func Run(name string, args []string, wasm []byte, stdin io.Reader, stdout io.Writer, stderr io.Writer, cwd string) int {
 	ctx := context.Background()
 
-	rtCfg := wazero.NewRuntimeConfig()
+	rtCfg := wazero.NewRuntimeConfig().WithCoreFeatures(api.CoreFeaturesV2 | experimental.CoreFeaturesTailCall)
 	uc, err := os.UserCacheDir()
 	if err == nil {
 		cache, err := wazero.NewCompilationCacheWithDir(filepath.Join(uc, "com.github.wasilibs"))
