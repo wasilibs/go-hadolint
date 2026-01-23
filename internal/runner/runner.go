@@ -34,6 +34,7 @@ func Run(name string, args []string, wasm []byte, stdin io.Reader, stdout io.Wri
 	args = append([]string{name}, args...)
 
 	root := sysfs.DirFS(cwd)
+	fsCfg := wazero.NewFSConfig().(sysfs.FSConfig).WithSysFSMount(root, "/") // nolint:forcetypeassert
 
 	cfg := wazero.NewModuleConfig().
 		WithSysNanosleep().
@@ -44,7 +45,7 @@ func Run(name string, args []string, wasm []byte, stdin io.Reader, stdout io.Wri
 		WithStdin(stdin).
 		WithRandSource(rand.Reader).
 		WithArgs(args...).
-		WithFSConfig(wazero.NewFSConfig().(sysfs.FSConfig).WithSysFSMount(root, "/"))
+		WithFSConfig(fsCfg)
 	for _, env := range os.Environ() {
 		k, v, _ := strings.Cut(env, "=")
 		if k == "PWD" {
