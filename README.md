@@ -12,13 +12,13 @@ Precompiled binaries are available in the [releases](https://github.com/wasilibs
 Alternatively, install the plugin you want using `go install`.
 
 ```bash
-$ go install github.com/wasilibs/go-hadolint/cmd/hadolint@latest
+go install github.com/wasilibs/go-hadolint/cmd/hadolint@latest
 ```
 
 To avoid installation entirely, it can be convenient to use `go run`
 
 ```bash
-$ go run github.com/wasilibs/go-hadolint/cmd/hadolint@latest *.sh
+go run github.com/wasilibs/go-hadolint/cmd/hadolint@latest *.sh
 ```
 
 _Due to [potential build breakage](https://github.com/golang/go/issues/71192) unrelated to this project,
