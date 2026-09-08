@@ -1,7 +1,7 @@
 # go-hadolint
 
-go-hadolint is a distribution of [hadolint][1], that can be built with Go. It does not actually reimplement any
-functionality of hadolint in Go, instead compiling it with the GHC WASI backend, and
+go-hadolint is a distribution of [hadolint][1], that can be built with Go. It does not actually
+reimplement any functionality of hadolint in Go, instead compiling it with the GHC WASI backend, and
 executing with the pure Go Wasm runtime [wazero][2]. This means that `go install` or `go run`
 can be used to execute it, with no need to rely on separate package managers such as pnpm,
 on any platform that Go supports.
@@ -25,8 +25,8 @@ _Due to [potential build breakage](https://github.com/golang/go/issues/71192) un
 `go tool` is not supported._
 
 Note that due to the sandboxing of the filesystem when using Wasm, currently only files that descend
-from the current directory when executing the tool are accessible to it, i.e., `../docker/Dockerfile` or
-`/separate/root/Dockerfile` will not be found.
+from the current directory when executing the tool are accessible to it, i.e., `../docker/Dockerfile`
+or `/separate/root/Dockerfile` will not be found.
 
 [1]: https://github.com/hadolint/hadolint
 [2]: https://wazero.io/
